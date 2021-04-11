@@ -1,1 +1,1 @@
-# micro-servicos-livro-repositorio
+# Repositorio com o código resultante do estudo do livro Back-End Java / Casa do Código.
