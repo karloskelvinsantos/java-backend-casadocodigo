@@ -25,7 +25,7 @@ public class ProductService {
     }
 
     public List<ProductDTO> getProductsByCategoryId(Long categoryId) {
-        List<Product> products = productRepository.getProductByCategory(categoryId);
+        List<Product> products = productRepository.getProductByCategoryId(categoryId);
         return products.stream().map(ProductDTO::convert).collect(Collectors.toList());
     }
 
@@ -35,12 +35,13 @@ public class ProductService {
     }
 
     public ProductDTO save(ProductDTO productDTO) {
-        Product product = productRepository.save(Product.convert(productDTO));
+        var product = productRepository.save(Product.convert(productDTO));
         return ProductDTO.convert(product);
     }
 
     public ProductDTO delete(long productId) throws ProductNotFoundException {
         Optional<Product> product = productRepository.findById(productId);
+
         if (product.isPresent()) {
             productRepository.delete(product.get());
         }

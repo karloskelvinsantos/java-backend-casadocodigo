@@ -1,14 +1,23 @@
 package br.com.karloskelvin.models.dtos;
 
 import br.com.karloskelvin.models.Product;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDTO {
 
     @NotBlank
+    @JsonProperty("identificador")
     private String productIdentifier;
     @NotBlank
     private String nome;
@@ -17,49 +26,10 @@ public class ProductDTO {
     @NotBlank
     private String descricao;
     @NotNull
+    @JsonProperty("categoria")
     private CategoryDTO category;
 
     public static ProductDTO convert(Product product) {
         return new ModelMapper().map(product, ProductDTO.class);
-    }
-
-    public String getProductIdentifier() {
-        return productIdentifier;
-    }
-
-    public void setProductIdentifier(String productIdentifier) {
-        this.productIdentifier = productIdentifier;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Float getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Float preco) {
-        this.preco = preco;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public CategoryDTO getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryDTO category) {
-        this.category = category;
     }
 }

@@ -1,6 +1,9 @@
 package br.com.karloskelvin.models;
 
 import br.com.karloskelvin.models.dtos.CategoryDTO;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 
 import javax.persistence.Entity;
@@ -9,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "category")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category {
 
     @Id
@@ -18,21 +24,5 @@ public class Category {
 
     public static Category convert(CategoryDTO categoryDTO) {
         return new ModelMapper().map(categoryDTO, Category.class);
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 }
