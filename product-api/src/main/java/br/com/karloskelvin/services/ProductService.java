@@ -1,8 +1,9 @@
 package br.com.karloskelvin.services;
 
+import br.com.karloskelvin.converters.DTOConverter;
 import br.com.karloskelvin.exceptions.ProductNotFoundException;
 import br.com.karloskelvin.models.Product;
-import br.com.karloskelvin.models.dtos.ProductDTO;
+import br.com.karloskelvin.dtos.ProductDTO;
 import br.com.karloskelvin.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,22 +22,22 @@ public class ProductService {
 
     public List<ProductDTO> getAll() {
         List<Product> products = productRepository.findAll();
-        return products.stream().map(ProductDTO::convert).collect(Collectors.toList());
+        return products.stream().map(DTOConverter::convert).collect(Collectors.toList());
     }
 
-    public List<ProductDTO> getProductsByCategoryId(Long categoryId) {
-        List<Product> products = productRepository.getProductByCategoryId(categoryId);
-        return products.stream().map(ProductDTO::convert).collect(Collectors.toList());
+    public List<ProductDTO> getProductsByCategoryId(Long categoriaId) {
+        List<Product> products = productRepository.getProductByCategoriaId(categoriaId);
+        return products.stream().map(DTOConverter::convert).collect(Collectors.toList());
     }
 
-    public ProductDTO findByProductIdentifier(String productIdentifier) {
-        Optional<Product> product = productRepository.findByProductIdentifier(productIdentifier);
-        return product.map(ProductDTO::convert).orElse(null);
+    public ProductDTO findByProductIdentifier(String identificador) {
+        Optional<Product> product = productRepository.findByIdentificador(identificador);
+        return product.map(DTOConverter::convert).orElse(null);
     }
 
     public ProductDTO save(ProductDTO productDTO) {
         var product = productRepository.save(Product.convert(productDTO));
-        return ProductDTO.convert(product);
+        return DTOConverter.convert(product);
     }
 
     public ProductDTO delete(long productId) throws ProductNotFoundException {

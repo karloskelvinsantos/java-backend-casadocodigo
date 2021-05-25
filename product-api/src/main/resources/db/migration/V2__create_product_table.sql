@@ -1,6 +1,6 @@
 create table products.product (
     id bigserial primary key,
-    product_identifier varchar not null,
+    identificador varchar not null,
     nome varchar(100) not null,
     descricao varchar not null,
     preco float not null,

@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    List<Product> getProductByCategoryId(@Param("categoryId") long categoryId);
+    List<Product> getProductByCategoriaId(@Param("categoriaId") long categoriaId);
 
-    Optional<Product> findByProductIdentifier(String productIdentifier);
+    Optional<Product> findByIdentificador(String identificador);
 }

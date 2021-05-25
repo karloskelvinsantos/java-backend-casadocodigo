@@ -1,7 +1,7 @@
 package br.com.karloskelvin.controllers;
 
 import br.com.karloskelvin.exceptions.ProductNotFoundException;
-import br.com.karloskelvin.models.dtos.ProductDTO;
+import br.com.karloskelvin.dtos.ProductDTO;
 import br.com.karloskelvin.services.ProductService;
 import org.springframework.web.bind.annotation.*;
 

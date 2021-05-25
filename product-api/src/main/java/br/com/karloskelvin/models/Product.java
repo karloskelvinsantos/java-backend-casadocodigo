@@ -1,6 +1,6 @@
 package br.com.karloskelvin.models;
 
-import br.com.karloskelvin.models.dtos.ProductDTO;
+import br.com.karloskelvin.dtos.ProductDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,11 +20,11 @@ public class Product {
     private String nome;
     private Float preco;
     private String descricao;
-    private String productIdentifier;
+    private String identificador;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category;
+    private Category categoria;
 
     public static Product convert(ProductDTO productDTO) {
         return new ModelMapper().map(productDTO, Product.class);
